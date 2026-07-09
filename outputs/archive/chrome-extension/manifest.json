@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Mini Claude — quick-doubt sidekick",
+  "version": "1.0.0",
+  "description": "A floating quick-chat on top of claude.ai. Ask small follow-up doubts about the answer you're reading without starting a new turn or losing your scroll. Uses your own Anthropic API key.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://claude.ai/*",
+    "https://api.anthropic.com/*"
+  ],
+  "action": {
+    "default_title": "Mini Claude settings",
+    "default_popup": "options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["mini-claude-core.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
